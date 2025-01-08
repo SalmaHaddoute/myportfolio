@@ -1,5 +1,5 @@
 import React from "react";
-import picter from "../Assets/photo.jpg";
+import picter from "../Assets/profil.jpg";
 
 const Card = ({ setActive }) => {
     return (
@@ -11,7 +11,7 @@ const Card = ({ setActive }) => {
             <img
                 src={picter}
                 alt="Profile"
-                className="w-full h-60 object-cover rounded-lg mb-6"
+                className="w-full h-70 object-cover rounded-lg mb-6"
             />
             <p className="text-gray-400 font-serif text-center text-base">
                 Based in Khemiset
@@ -20,12 +20,48 @@ const Card = ({ setActive }) => {
                 Frontend , Backend Developer
             </p>
             <div className="flex justify-center space-x-4 text-xl mb-8">
-                <i className="fab fa-facebook hover:text-red-500 cursor-pointer"></i>
-                <i className="fab fa-x-twitter hover:text-red-500 cursor-pointer"></i>
-                <i className="fab fa-instagram hover:text-red-500 cursor-pointer"></i>
-                <i className="fab fa-linkedin hover:text-red-500 cursor-pointer"></i>
-                <i className="fab fa-google hover:text-red-500 cursor-pointer"></i>
+                <a 
+                    href="https://www.facebook.com/yourprofile" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="hover:text-red-500 cursor-pointer"
+                >
+                    <i className="fab fa-facebook"></i>
+                </a>
+                <a 
+                    href="https://github.com/SalmaHaddoute" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="hover:text-red-500 cursor-pointer"
+                >
+                    <i className="fab fa-github"></i>
+                </a>
+                <a 
+                    href="https://www.instagram.com/yourprofile" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="hover:text-red-500 cursor-pointer"
+                >
+                    <i className="fab fa-instagram"></i>
+                </a>
+                <a 
+                    href="https://www.linkedin.com/in/salma-haddoute-665798291/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="hover:text-red-500 cursor-pointer"
+                >
+                    <i className="fab fa-linkedin"></i>
+                </a>
+                <a 
+                    href="mailto:salmahaddoute@gmail.com" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="hover:text-red-500 cursor-pointer"
+                >
+                    <i className="fab fa-google"></i>
+                </a>
             </div>
+
             <button
                 onClick={() => setActive("contact")} // Change l'état active à "contact"
                 className="bg-red-500 text-black font-bold py-3 px-6 rounded-lg w-full hover:bg-red-600 transition"

@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import shop from '../Assets/shop.png';
+import React, { useState } from 'react';
 import note from '../Assets/note.png';
-import travel from '../Assets/trzvel.png';
-import ecommerce from '../Assets/ecommerce.png';
-import library from '../Assets/library.png';
+import travel from '../Assets/travel.png';
+import ecommerce from '../Assets/ecom.png';
+import Foodio from '../Assets/Foodio.png';
 
 const projects = [
     {
@@ -28,46 +27,42 @@ const projects = [
         githubLink: "https://github.com/SalmaHaddoute/My-Dream-Place",
     },
     {
-        title: "Library Management System",
+        title: "FOODIO",
         description:
-            "A web-based system to manage books, users, and loans. Built with PHP and MySQL for the backend, and Bootstrap for the frontend.",
-        image: library,
-        githubLink: "https://github.com/SalmaHaddoute/Task-Management",
-    },
-    {
-        title: "ShopCard",
-        description:
-            "A simplified shopping cart system, designed to manage products and orders with React.js and Node.js.",
-        image: shop,
-        githubLink: "https://github.com/SalmaHaddoute/ShopCart",
-    },
+            "A food blog website built with React.js and CSS, featuring a clean and modern design.",
+        image: Foodio,
+        githubLink: "https://github.com/SalmaHaddoute/FOODIO",
+    }
 ];
 
 const Project = () => {
     const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setCurrentProjectIndex((prevIndex) => (prevIndex + 1) % projects.length);
-        }, 2000); // Change project every 3 seconds
+    const handleNext = () => {
+        setCurrentProjectIndex((prevIndex) => (prevIndex + 1) % projects.length);
+    };
 
-        return () => clearInterval(interval); // Cleanup on unmount
-    }, []);
+    const handlePrevious = () => {
+        setCurrentProjectIndex((prevIndex) =>
+            prevIndex === 0 ? projects.length - 1 : prevIndex - 1
+        );
+    };
 
     const currentProject = projects[currentProjectIndex];
 
     return (
-        <div className="text-white p-8 max-w-4xl mx-auto"> {/* Increased padding and width for larger container */}
-            <h1 className="text-4xl font-bold mb-8"> {/* Increased font size */}
+        <div className="text-white p-8">
+            <h1 className="text-4xl font-bold mb-8 text-center">
                 Featured <span className="text-red-500">Projects</span>
             </h1>
-            <div className="border-2 border-red-500 rounded-xl p-6 space-y-6 bg-gray-900 transition-opacity duration-1000  max-w-[1000px] max-h-[750px]"> {/* Increased padding and max height */}
+            <div className="relative mx-auto justify-center bg-gray-900 border-2 border-red-500 rounded-xl p-6 max-w-[900px] w-full space-y-6">
+                {/* Contenu principal */}
                 <img
                     src={currentProject.image}
                     alt={currentProject.title}
-                    className="rounded-lg object-cover w-200 h-150" 
+                    className="rounded-lg object-cover w-full h-90 lg:h-96"
                 />
-                <h2 className="text-2xl font-bold">{currentProject.title}</h2> {/* Increased font size */}
+                <h2 className="text-2xl font-bold">{currentProject.title}</h2>
                 <p className="text-gray-400">{currentProject.description}</p>
                 <a
                     href={currentProject.githubLink}
@@ -77,6 +72,19 @@ const Project = () => {
                 >
                     You can see more on my GitHub &rarr;
                 </a>
+                {/* Boutons */}
+                <button
+                    onClick={handlePrevious}
+                    className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-4 rounded-full shadow-lg hover:bg-red-500"
+                >
+                    &#8592;
+                </button>
+                <button
+                    onClick={handleNext}
+                    className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-4 rounded-full shadow-lg hover:bg-red-500"
+                >
+                    &#8594;
+                </button>
             </div>
         </div>
     );

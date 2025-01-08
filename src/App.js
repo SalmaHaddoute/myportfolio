@@ -34,25 +34,24 @@ function App() {
     };
 
     return (
-        <div className="App bg-slate-800   w-full min-h-screen flex">
+        <div className="App bg-slate-800 w-full min-h-screen flex relative">
             {/* Card à GAUCHE */}
-            <div className="w-[300px] mt-20 fixed left-0">
-            <Card setActive={setActive} />
+            <div className="w-[300px] fixed left-0 top-0 h-full flex items-center">
+                <Card setActive={setActive} />
             </div>
 
+            {/* Contenu principal centré */}
             <div
-    className="flex-grow flex items-center justify-center mx-auto mt-18"
-    style={{ marginLeft: "17rem" }} // Équivalent à ml-40
->
-    {renderContent()}
-</div>
-
+                className="flex-grow flex items-center justify-center mx-auto min-h-screen"
+                style={{ marginLeft: "300px", marginRight: "80px" }} // Ajuste l'espacement selon les dimensions des côtés
+            >
+                {renderContent()}
+            </div>
 
             {/* SideBar à DROITE */}
-            <div className="w-[80px] fixed right-0 pr-0">
+            <div className="w-[80px] fixed right-0 top-0 h-full flex items-center">
                 <SideBar active={active} setActive={setActive} />
             </div>
-            
         </div>
     );
 }
